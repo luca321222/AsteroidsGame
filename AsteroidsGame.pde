@@ -1,12 +1,17 @@
 Spaceship P1 = new Spaceship(255, 93, 93);
 Spaceship P2 = new Spaceship(95, 134, 247);
 Star[] stars = new Star[100];
+ArrayList <Asteroid> belt = new ArrayList <Asteroid>();
 public void setup() 
 {
   size(400, 400);
   for (int i = 0; i < stars.length; i++)
   {
     stars[i] = new Star();
+  }
+  for(int i = 0; i < (int)(Math.random()*30)+10; i++)
+  {
+    belt.add(new Asteroid());
   }
 }
 public void draw() 
@@ -15,6 +20,17 @@ public void draw()
   for (int i = 0; i < stars.length; i++)
   {
     stars[i].shine();
+  }
+  for(int i = 0; i < belt.size(); i++)
+  {
+    belt.get(i).show();
+    belt.get(i).move();
+    float d1 = dist((float)P1.getX(), (float)P1.getY(), (float)belt.get(i).getX(), (float)belt.get(i).getY());
+    float d2 = dist((float)P2.getX(), (float)P2.getY(), (float)belt.get(i).getX(), (float)belt.get(i).getY());
+    if(d1 < 20 || d2 < 20)
+    {
+     belt.remove(i); 
+    }
   }
   P1.show();
   P1.move();
