@@ -44,12 +44,14 @@ public void draw()
   }
   for (int i = 0; i < phaser.size(); i++)
   {
-    float dp = dist((float)phaser.get(i).getX(), (float)phaser.get(i).getY(), (float)belt.get(i).getX(), (float)belt.get(i).getY());
-    if (dp < 20)
+    for (int l = 0; l < belt.size(); l++)
     {
-      phaser.remove(i);
-      belt.remove(i);
-      break;
+      if (dist((float)phaser.get(i).getX(), (float)phaser.get(i).getY(), (float)belt.get(l).getX(), (float)belt.get(l).getY())< 20)
+      {
+        phaser.remove(i);
+        belt.remove(l);
+        break;
+      }
     }
   }
 }
