@@ -46,7 +46,7 @@ public void draw()
   {
     for (int l = 0; l < belt.size(); l++)
     {
-      if (dist((float)phaser.get(i).getX(), (float)phaser.get(i).getY(), (float)belt.get(l).getX(), (float)belt.get(l).getY())< 20)
+      if (dist((float)phaser.get(i).getX(), (float)phaser.get(i).getY(), (float)belt.get(l).getX(), (float)belt.get(l).getY())< 30)
       {
         phaser.remove(i);
         belt.remove(l);
